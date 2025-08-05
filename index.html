@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gala d'Ambiance - ISC Bukavu</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
   <style>
     body {
       background: #f7f9fc;
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
     }
     .header {
       background: #052c65;
       color: white;
       padding: 2rem 1rem;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      position: relative;
     }
     .logo {
       height: 60px;
@@ -25,150 +23,288 @@
       background: white;
       padding: 5px;
     }
-    .header-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    .carousel-item {
+      height: 600px;
+      overflow: hidden;
+      position: relative;
     }
-    @media (min-width: 768px) {
-      .header-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .header-content h1,
-      .header-content p,
-      .header-content h2,
-      .header-content h3 {
-        text-align: center;
-        width: 100%;
-      }
+    .carousel-item img {
+      height: 600px;
+      object-fit: cover;
+      width: 100%;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 1.2s ease;
     }
-    .marquee {
-      background-color: #f0f0f0;
+    .carousel-item.active img {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .highlight {
+      background-color: #ffc107;
       color: #052c65;
       font-weight: bold;
-      padding: 0.5rem;
+      padding: 0.8rem;
+      animation: slide-left 15s linear infinite;
+    }
+    @keyframes slide-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
     .section {
-      padding: 2rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 2.5rem 1rem;
       background: white;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      margin: 2rem auto;
       border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      max-width: 1000px;
+    }
+    .section h3 {
+      font-weight: bold;
+      color: #052c65;
     }
     .footer {
       background: #052c65;
       color: white;
       text-align: center;
       padding: 1rem;
-      margin-top: 2rem;
     }
-    .contact a {
-      text-decoration: none;
+    blockquote {
+      font-style: italic;
+      border-left: 5px solid #ffc107;
+      padding-left: 15px;
+      margin: 1.5rem 0;
+      color: #333;
     }
-    .carousel-item img {
-      height: 250px;
-      object-fit: cover;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+        .footer a {
+      transition: color 0.3s ease;
     }
-    @media (min-width: 768px) {
-      .carousel-item img {
-        height: 400px;
-      }
+
+    .footer a:hover {
+      color: #ffc107 !important;
+      text-decoration: underline;
     }
-    #carouselGala {
-      max-width: 900px;
-      margin: 2rem auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
+
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <div class="container header-content">
-      <img src="logo_college.png" alt="Logo Collège" class="logo">
+  <!-- En-tête -->
+  <div class="header text-center">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <img src="images/logo_college.png" class="logo mb-2 mb-md-0" alt="Logo ISC" />
       <div>
-        <h1>ISC-Bukavu</h1>
+        <h1 class="mb-1">ISC-Bukavu</h1>
         <p>Le vrai choix du moment</p>
-        <h2>Collège des étudiants vous présente</h2>
-        <h3>🎉 Gala d'Ambiance 2025 🎓</h3>
+        <h2>🎓 Gala d'Ambiance 2025 🎉</h2>
+        <p>Présenté par le Collège des étudiants</p>
       </div>
-      <img src="logo_college.png" alt="Logo ISC" class="logo">
+      <img src="images/logo_college.png" class="logo mb-2 mb-md-0" alt="Logo ISC" />
     </div>
   </div>
 
-  <div class="marquee">
-    <marquee direction="left">✨ Samedi 30 août 2025 à l’Hôtel Riviera Ruzizi ✨ Billets en vente maintenant ! ✨ Contactez le comité ✨</marquee>
+  <!-- Marquee -->
+  <div class="highlight text-center">
+    📍 Samedi 30 août 2025 - Galerie Betty | 🎟️ Billets disponibles | 📲 Contactez le comité dès maintenant !
   </div>
 
-  <div id="carouselGala" class="carousel slide" data-bs-ride="carousel">
+  <!-- Carrousel principal -->
+  <div id="carouselPrincipal" class="carousel slide mt-4" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img1.jpg" class="d-block w-100" alt="Animation culturelle">
+        <img src="images/img2.jpg" alt="Gala 2023">
+        <div class="carousel-caption">
+          <h5>Gala d'Ambiance 2025 - Ambiance festive</h5>
+          <p>Rires, reconnaissance et unité estudiantine.</p>
+        </div>
       </div>
       <div class="carousel-item">
-        <img src="img2.HEIC" class="d-block w-100" alt="Danse et mode">
+        <img src="images/img1.jpg" alt="Gala 2022">
+        <div class="carousel-caption">
+          <h5>Gala d'Ambiance 2025 - Talents en scène</h5>
+          <p>Une scène ouverte aux artistes ISC.</p>
+        </div>
       </div>
       <div class="carousel-item">
-        <img src="img3.HEIC" class="d-block w-100" alt="Football et surprises">
+        <img src="images/img3.HEIC" alt="Gala 2021">
+        <div class="carousel-caption">
+          <h5>Gala d'Ambiance 2025 - Souvenirs mémorables</h5>
+          <p>Une tradition de joie et de succès.</p>
+        </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselGala" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Précédent</span>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselGala" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Suivant</span>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
     </button>
   </div>
 
-  <div class="section container mt-4">
-    <h4>📅 Samedi 30 août 2025</h4>
-    <p><strong>Lieu :</strong> GALERIE BETTY</p>
+  <!-- À propos -->
+  <div class="section" id="apropos">
+    <h3>✨ À propos du Gala d'Ambiance</h3>
+    <p>
+      Le Gala d'Ambiance de l'ISC-Bukavu est bien plus qu'une simple fête. C’est un moment de célébration de notre identité collective, une tradition annuelle où chaque étudiant peut exprimer son talent, tisser des liens, et vivre une expérience marquante de son parcours universitaire.
+    </p>
+    <p>
+      Organisé avec soin par le Collège des étudiants, cet événement reflète les valeurs de notre institution : excellence, diversité, solidarité.
+    </p>
+  </div>
 
-    <h5>Objectifs de la fête :</h5>
+  <!-- Objectifs -->
+  <div class="section" id="objectifs">
+    <h3>🎯 Objectifs de l'événement</h3>
     <ul>
-      <li>Accueillir chaleureusement les nouveaux étudiants</li>
-      <li>Honorer les finalistes en partance</li>
-      <li>Renforcer les liens inter-promotions</li>
-      <li>Célébrer ensemble les efforts académiques</li>
+      <li>Accueillir les nouveaux étudiants dans une ambiance conviviale.</li>
+      <li>Honorer les finalistes pour leur parcours exceptionnel.</li>
+      <li>Créer une plateforme d'expression culturelle et artistique.</li>
+      <li>Favoriser la cohésion entre promotions et départements.</li>
     </ul>
+  </div>
 
-    <h5>Programme :</h5>
+  <!-- Motivation principale -->
+  <div class="section">
+    <h3>💡 Pourquoi participer ?</h3>
+    <div class="row text-center mt-4">
+      <div class="col-md-4">
+        <i class="bi bi-star-fill fs-2 text-warning"></i>
+        <p>Un moment inoubliable pour tous les étudiants.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="bi bi-mic-fill fs-2 text-danger"></i>
+        <p>Montrer ses talents artistiques sur une vraie scène.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="bi bi-people-fill fs-2 text-success"></i>
+        <p>Créer des souvenirs forts entre amis et professeurs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Motivation additionnelle -->
+  <div class="section">
+    <h3>🚀 Une opportunité unique</h3>
+    <p>
+      Participer au Gala, c’est aussi élargir ses horizons, découvrir d’autres cultures universitaires, et sortir grandi d’une soirée riche en émotions. C’est un moment de valorisation des initiatives étudiantes et de renforcement du leadership.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>🌟 Témoigner de l’excellence ISC</h3>
+    <p>
+      Le Gala d’Ambiance reflète la qualité, le professionnalisme et la créativité des étudiants ISC. Venez montrer au public l’esprit d’initiative et de collaboration qui anime notre communauté.
+    </p>
+  </div>
+
+  <!-- Infos pratiques -->
+  <div class="section" id="infos">
+    <h3>📅 Infos pratiques</h3>
+    <p><strong>Date :</strong> Samedi 30 août 2025</p>
+    <p><strong>Lieu :</strong> Galerie Betty, Bukavu</p>
+    <p><strong>Billets :</strong> 5$ Standard | 10$ VIP | Sponsoring dès 50$</p>
+
+    <h5>📞 Contact :</h5>
     <ul>
-      <li>Animations culturelles & artistiques</li>
-      <li>Danse, sketchs, chant, mode</li>
-      <li>Mot de reconnaissance aux enseignants</li>
-      <li>Football d'intégration, surprises & plus encore !</li>
+      <li><i class="bi bi-whatsapp"></i> Porte-parole des Etudiants : <a href="https://wa.me/243978633973">+243 978 633 973</a></li>
+      <li><i class="bi bi-whatsapp"></i> Secrétaire du collège des Etudiants : <a href="https://wa.me/243975163063">+243 975 163 063</a></li>
+      <li><i class="bi bi-whatsapp"></i> Ministre des affaires sociales : <a href="https://wa.me/243991602901">+243 991 602 901</a></li>
+      <li><i class="bi bi-whatsapp"></i> Chef de promotion BAC1 : <a href="https://wa.me/243992017811">+243 992 017 811</a></li>
     </ul>
+    <p><strong>NB :</strong> Tenue correcte exigée. Thème vestimentaire : <em>Élégance universitaire</em>.</p>
+  </div>
+   <!-- ✨ Mots d'inspiration -->
+  <div class="section text-center">
+    <h3>✨ Mots d'inspiration par Sylbamu(Porte-parole des Etudiants)</h3>
+    <p class="fs-5 fst-italic text-muted">"Prépare-toi à briller, c'est le gala d'ambiance."</p>
+    <p class="fs-5 fst-italic text-muted">"Ravis les moments précieux en toi, la vie c'est maintenant !"</p>
+    <p class="fs-5 fst-italic text-muted">"Voici l'opportunité, construis-toi des souvenirs dès maintenant."</p>
+    <p class="fs-5 fst-italic text-muted">"L'élégance en fête, l'ambiance en majesté !"</p>
+    <p class="fs-5 fst-italic text-muted">"On ne promet pas la lune, juste une ambiance galactique."</p>
+  </div>
 
-    <p><strong>Billets :</strong> 5$ Standard / 10$ VIP, Sponsors standards 50$ / 100$ VIP (en vente auprès des membres du comité)</p>
+  <!-- Mini-galerie carousel -->
+  <div class="section container" id="galerie">
+    <h4 class="text-center">📸 Galerie Iscienne</h4>
+    <div id="carouselMiniGalerie" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row g-2">
+            <div class="col-md-4">
+              <img src="images/img8.jpg" class="d-block w-100 rounded shadow-sm" alt="Galerie 1">
+            </div>
+            <div class="col-md-4">
+              <img src="images/img9.png" class="d-block w-100 rounded shadow-sm" alt="Galerie 2">
+            </div>
+            <div class="col-md-4">
+              <img src="images/img10.png" class="d-block w-100 rounded shadow-sm" alt="Galerie 3">
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row g-2">
+            <div class="col-md-4">
+              <img src="images/img2.jpg" class="d-block w-100 rounded shadow-sm" alt="Galerie 4">
+            </div>
+            <div class="col-md-4">
+              <img src="images/img11.jpg" class="d-block w-100 rounded shadow-sm" alt="Galerie 5">
+            </div>
+            <div class="col-md-4">
+              <img src="images/img12.png" class="d-block w-100 rounded shadow-sm" alt="Galerie 6">
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselMiniGalerie" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselMiniGalerie" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
 
-    <div class="contact">
-      <h5>📞 Contact & Infos :</h5>
-      <ul>
-        <li>Sylvain (Porte-parole) : <a href="https://wa.me/243978633973">+243 978 633 973</a></li>
-        <li>Chef de promo BAC1 : <a href="https://wa.me/243992017811">+243 992 017 811</a></li>
-        <li>Secrétaire du collège : <a href="https://wa.me/243975163063">+243 975 163 063</a></li>
-        <li>Vice-ministre affaires sociales : <a href="https://wa.me/243815054597">+243 815 054 597</a></li>
-      </ul>
+  <!-- Footer -->
+<footer class="footer mt-5">
+  <div class="container text-center py-4">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <h5>🔗 Navigation</h5>
+        <ul class="list-unstyled">
+          <li><a href="#carouselPrincipal" class="text-white text-decoration-none">Accueil</a></li>
+          <li><a href="#apropos" class="text-white text-decoration-none">À propos</a></li>
+          <li><a href="#objectifs" class="text-white text-decoration-none">Objectifs</a></li>
+          <li><a href="#infos" class="text-white text-decoration-none">Infos pratiques</a></li>
+          <li><a href="#galerie" class="text-white text-decoration-none">Galerie</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>📬 Contact</h5>
+        <p>Email : <a href="mailto:gratienecawaeca@gmail.com" class="text-white fw-bold">Gratien E. Ramadhani</a></p>
+        <p><i class="bi bi-whatsapp"></i> WhatsApp : <a href="https://wa.me/243978633973" class="text-white">+243 975 163 063</a></p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>✨ ISC Bukavu</h5>
+        <p>Le vrai choix du moment.</p>
+        <p>Événement organisé par le Collège des Étudiants.</p>
+      </div>
     </div>
 
-    <p><strong>NB :</strong> Tenue correcte exigée. Thème vestimentaire : Élégance universitaire</p>
-  </div>
+    <hr class="border-top border-light my-3" />
 
-  <div class="footer">
-    &copy; 2025 Gala ISC-Bukavu | Développé par <a href="mailto:gratienecawaeca@gmail.com" class="text-white fw-bold">Gratien E. Ramadhani</a>
+    <div class="small text-white-50">
+    &copy;2025 <strong>Collège des Etudiants-ISC Bukavu</strong> | Développé par <a href="mailto:gratienecawaeca@gmail.com" class="text-white fw-bold">Gratien E. Ramadhani</a> | Dernière mise à jour : <strong>05 août 2025</strong>
+</div>
+
   </div>
+</footer>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
